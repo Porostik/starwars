@@ -8,68 +8,70 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { Route as rootRouteImport } from './../../pages/__root';
-import { Route as IndexRouteImport } from './../../pages/index';
-import { Route as CharacterIdRouteImport } from './../../pages/character.$id';
+import { Route as rootRouteImport } from './../../pages/__root'
+import { Route as IndexRouteImport } from './../../pages/index'
+import { Route as CharacterIdRouteImport } from './../../pages/character.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport
-} as any);
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CharacterIdRoute = CharacterIdRouteImport.update({
   id: '/character/$id',
   path: '/character/$id',
-  getParentRoute: () => rootRouteImport
-} as any);
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute;
-  '/character/$id': typeof CharacterIdRoute;
+  '/': typeof IndexRoute
+  '/character/$id': typeof CharacterIdRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute;
-  '/character/$id': typeof CharacterIdRoute;
+  '/': typeof IndexRoute
+  '/character/$id': typeof CharacterIdRoute
 }
 export interface FileRoutesById {
-  __root__: typeof rootRouteImport;
-  '/': typeof IndexRoute;
-  '/character/$id': typeof CharacterIdRoute;
+  __root__: typeof rootRouteImport
+  '/': typeof IndexRoute
+  '/character/$id': typeof CharacterIdRoute
 }
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath;
-  fullPaths: '/' | '/character/$id';
-  fileRoutesByTo: FileRoutesByTo;
-  to: '/' | '/character/$id';
-  id: '__root__' | '/' | '/character/$id';
-  fileRoutesById: FileRoutesById;
+  fileRoutesByFullPath: FileRoutesByFullPath
+  fullPaths: '/' | '/character/$id'
+  fileRoutesByTo: FileRoutesByTo
+  to: '/' | '/character/$id'
+  id: '__root__' | '/' | '/character/$id'
+  fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute;
-  CharacterIdRoute: typeof CharacterIdRoute;
+  IndexRoute: typeof IndexRoute
+  CharacterIdRoute: typeof CharacterIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
     '/': {
-      id: '/';
-      path: '/';
-      fullPath: '/';
-      preLoaderRoute: typeof IndexRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/character/$id': {
-      id: '/character/$id';
-      path: '/character/$id';
-      fullPath: '/character/$id';
-      preLoaderRoute: typeof CharacterIdRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
+      id: '/character/$id'
+      path: '/character/$id'
+      fullPath: '/character/$id'
+      preLoaderRoute: typeof CharacterIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  CharacterIdRoute: CharacterIdRoute
-};
-export const routeTree = rootRouteImport._addFileChildren(rootRouteChildren)._addFileTypes<FileRouteTypes>();
+  CharacterIdRoute: CharacterIdRoute,
+}
+export const routeTree = rootRouteImport
+  ._addFileChildren(rootRouteChildren)
+  ._addFileTypes<FileRouteTypes>()
