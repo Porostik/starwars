@@ -20,6 +20,6 @@ export const usePagination = (currentPage: number, total: number) => {
     prevPage: page - 1,
     nextPage: page + 1,
     start,
-    end,
+    end
   };
 };

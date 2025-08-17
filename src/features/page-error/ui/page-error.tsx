@@ -1,7 +1,7 @@
-import { Button } from "@/shared/ui/button";
-import { useQueryErrorResetBoundary } from "@tanstack/react-query";
-import { useRouter } from "@tanstack/react-router";
-import { useEffect } from "react";
+import { Button } from '@/shared/ui/button';
+import { useQueryErrorResetBoundary } from '@tanstack/react-query';
+import { useRouter } from '@tanstack/react-router';
+import { useEffect } from 'react';
 
 interface PageErrorProps {
   routeId: string;
@@ -25,9 +25,9 @@ export const PageError = ({ routeId }: PageErrorProps) => {
       <Button
         variant="secondary"
         onClick={() => {
-          router.invalidate({
+          void router.invalidate({
             filter: (m) => m.routeId === routeId,
-            forcePending: true,
+            forcePending: true
           });
         }}
       >

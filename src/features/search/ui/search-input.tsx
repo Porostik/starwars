@@ -1,6 +1,6 @@
-import { useDebounce } from "@/shared/hooks";
-import { Skeleton } from "@/shared/ui/skeleton";
-import { Search } from "lucide-react";
+import { useDebounce } from '@/shared/hooks';
+import { Skeleton } from '@/shared/ui/skeleton';
+import { Search } from 'lucide-react';
 
 interface SearchInputProps {
   onSearch: (value: string) => void;
@@ -8,11 +8,7 @@ interface SearchInputProps {
   isDisabled?: boolean;
 }
 
-export const SearchInput = ({
-  onSearch,
-  initialValue,
-  isDisabled,
-}: SearchInputProps) => {
+export const SearchInput = ({ onSearch, initialValue, isDisabled }: SearchInputProps) => {
   const debouncedChangeSearch = useDebounce(onSearch, 500);
 
   return (

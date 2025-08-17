@@ -1,4 +1,4 @@
-import type { Person } from "@/shared/api";
+import type { Person } from '@/shared/api';
 
 export interface ProcessPerson extends Person {
   id: number;

@@ -1,5 +1,5 @@
-import { getMinutes } from "@/shared/helpers";
-import { MutationCache, QueryCache, QueryClient } from "@tanstack/react-query";
+import { getMinutes } from '@/shared/helpers';
+import { MutationCache, QueryCache, QueryClient } from '@tanstack/react-query';
 
 export const queryClient = new QueryClient({
   queryCache: new QueryCache({
@@ -11,7 +11,7 @@ export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       staleTime: getMinutes(10),
-      retry: 3,
-    },
-  },
+      retry: 3
+    }
+  }
 });

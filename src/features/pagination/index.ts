@@ -1,1 +1,1 @@
-export { PeoplesPagination } from "./ui/pagination";
+export { PeoplesPagination } from './ui/pagination';

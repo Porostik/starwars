@@ -1,6 +1,6 @@
 const transform = (v: string) => {
   try {
-    return JSON.parse(v);
+    return JSON.parse(v) as string;
   } catch (error) {
     console.error(error);
     return v;
@@ -8,5 +8,5 @@ const transform = (v: string) => {
 };
 
 export const object = {
-  transform,
+  transform
 };

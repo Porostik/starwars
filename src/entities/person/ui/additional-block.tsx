@@ -1,8 +1,8 @@
-import { useQueries } from "@tanstack/react-query";
-import { getDirectOptions } from "../api/get-direct";
-import type { DirectResponse } from "../types";
-import { Badge } from "@/shared/ui/badge";
-import { InfoCard } from "@/shared/ui/info-card";
+import { useQueries } from '@tanstack/react-query';
+import { getDirectOptions } from '../api/get-direct';
+import type { DirectResponse } from '../types';
+import { Badge } from '@/shared/ui/badge';
+import { InfoCard } from '@/shared/ui/info-card';
 
 interface AdditionalBlockProps {
   title: string;
@@ -13,8 +13,8 @@ export const AdditionalBlock = ({ title, urls }: AdditionalBlockProps) => {
   const data = useQueries({
     queries: urls.map((url) => ({
       ...getDirectOptions(url),
-      select: (data: DirectResponse) => ({ title: data.name ?? data.title }),
-    })),
+      select: (data: DirectResponse) => ({ title: data.name ?? data.title })
+    }))
   });
 
   const isHaveLoadedItem = data.find((item) => !!item.data?.title);
@@ -35,9 +35,7 @@ export const AdditionalBlock = ({ title, urls }: AdditionalBlockProps) => {
         </div>
       ) : (
         <div className="flex items-center justify-center w-full h-full animate-pulse">
-          <span className="text-white font-medium text-sm">
-            Just a moment...
-          </span>
+          <span className="text-white font-medium text-sm">Just a moment...</span>
         </div>
       )}
     </InfoCard>

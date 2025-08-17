@@ -1,10 +1,11 @@
-import { z, type ZodRawShape } from "zod";
-import { processing } from "./process";
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+import { z, type ZodRawShape } from 'zod';
+import { processing } from './process';
 
 export const createEnv = <T extends ZodRawShape>({
   shape,
   keyFormat,
-  env,
+  env
 }: {
   shape: T;
   keyFormat: (key: string) => string;
@@ -15,13 +16,11 @@ export const createEnv = <T extends ZodRawShape>({
   const objSchema = z.object(shape);
 
   const processEnv = Object.keys(shape).reduce((acc, key) => {
-    const process =
-      processing[shape[key]._def.typeName as keyof typeof processing] ??
-      processing.default;
+    const process = processing[shape[key]._def.typeName as keyof typeof processing] ?? processing.default;
 
     return {
       ...acc,
-      [key]: process.transform(_getValue(key)),
+      [key]: process.transform(_getValue(key))
     };
   }, {});
 
@@ -29,10 +28,8 @@ export const createEnv = <T extends ZodRawShape>({
 
   return new Proxy<{ [key in keyof T]: z.infer<T[key]> }>(shape, {
     get: (_, key: keyof T & string) => {
-      const process =
-        processing[shape[key]._def.typeName as keyof typeof processing] ??
-        processing.default;
+      const process = processing[shape[key]._def.typeName as keyof typeof processing] ?? processing.default;
       return process.transform(_getValue(key));
-    },
+    }
   });
 };

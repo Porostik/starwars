@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from '@tanstack/react-router';
 import {
   AdditionalBlock,
   getDirectOptions,
@@ -8,14 +8,14 @@ import {
   useGetMergedPerson,
   useIsShowPendingText,
   useRewriteStore,
-  type ProcessPerson,
-} from "@/entities/person";
-import { BackLink } from "@/features/back-link";
-import { Skeleton } from "@/shared/ui/skeleton";
-import { PageError } from "@/features/page-error";
-import { useMemo, useState } from "react";
-import { WritableValue } from "@/shared/lib/writable-value";
-import { Button } from "@/shared/ui/button";
+  type ProcessPerson
+} from '@/entities/person';
+import { BackLink } from '@/features/back-link';
+import { Skeleton } from '@/shared/ui/skeleton';
+import { PageError } from '@/features/page-error';
+import { useMemo, useState } from 'react';
+import { WritableValue } from '@/shared/lib/writable-value';
+import { Button } from '@/shared/ui/button';
 
 const PendingComponent = () => {
   const { isShow: isShowPendingText } = useIsShowPendingText(true, 5000);
@@ -62,11 +62,7 @@ function Character() {
         <BackLink />
 
         {isChanged && (
-          <Button
-            className="h-7"
-            variant="secondary"
-            onClick={() => onRewrite(person)}
-          >
+          <Button className="h-7" variant="secondary" onClick={() => onRewrite(person)}>
             Save
           </Button>
         )}
@@ -86,33 +82,21 @@ function Character() {
           onChangeValue={(field, value) =>
             setPerson((prev) => ({
               ...prev,
-              [field]: value,
+              [field]: value
             }))
           }
         />
         <AdditionalBlock title="Films" urls={person.films} key="films" />
         <AdditionalBlock title="Species" urls={person.species} key="species" />
-        <AdditionalBlock
-          title="Planets"
-          urls={person.planets ?? []}
-          key="planets"
-        />
-        <AdditionalBlock
-          title="Starships"
-          urls={person.starships}
-          key="starships"
-        />
-        <AdditionalBlock
-          title="Vehicles"
-          urls={person.vehicles}
-          key="vehicles"
-        />
+        <AdditionalBlock title="Planets" urls={person.planets ?? []} key="planets" />
+        <AdditionalBlock title="Starships" urls={person.starships} key="starships" />
+        <AdditionalBlock title="Vehicles" urls={person.vehicles} key="vehicles" />
       </div>
     </div>
   );
 }
 
-export const Route = createFileRoute("/character/$id")({
+export const Route = createFileRoute('/character/$id')({
   component: Character,
   loader: async ({ context: { queryClient }, params: { id } }) => {
     const rewrites = useRewriteStore.getState().rewrites;
@@ -124,23 +108,19 @@ export const Route = createFileRoute("/character/$id")({
     } else {
       person = await queryClient.ensureQueryData(
         getPersonOptions({
-          id: Number(id),
+          id: Number(id)
         })
       );
     }
 
-    const refs = [
-      person.homeworld,
-      ...person.films,
-      ...person.starships,
-      ...person.vehicles,
-      ...person.species,
-    ].filter((item) => !!item);
+    const refs = [person.homeworld, ...person.films, ...person.starships, ...person.vehicles, ...person.species].filter(
+      (item) => !!item
+    );
 
-    refs.forEach((url) => queryClient.prefetchQuery(getDirectOptions(url)));
+    refs.forEach((url) => void queryClient.prefetchQuery(getDirectOptions(url)));
 
     return person;
   },
   pendingComponent: PendingComponent,
-  errorComponent: () => <PageError routeId={Route.id} />,
+  errorComponent: () => <PageError routeId={Route.id} />
 });

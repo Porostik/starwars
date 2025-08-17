@@ -1,8 +1,8 @@
-import { Link, useRouter } from "@tanstack/react-router";
-import type { ProcessPerson } from "../types";
-import { useQueryClient } from "@tanstack/react-query";
-import { getPersonOptions } from "../api/get-person";
-import { useGetMergedPerson } from "../model/rewrite-store";
+import { Link, useRouter } from '@tanstack/react-router';
+import type { ProcessPerson } from '../types';
+import { useQueryClient } from '@tanstack/react-query';
+import { getPersonOptions } from '../api/get-person';
+import { useGetMergedPerson } from '../model/rewrite-store';
 
 interface PersonCardProps {
   person: ProcessPerson;
@@ -27,12 +27,11 @@ export const PersonCard = ({ person }: PersonCardProps) => {
 
   const router = useRouter();
   const loc = router.state.location;
-  const returnUrl = `${loc.pathname}?${new URLSearchParams(loc.search).toString()}`;
+  const returnUrl = `${loc.pathname}?${new URLSearchParams(loc.search as Record<string, string>).toString()}`;
 
   const mergedPerson = useGetMergedPerson(person);
 
-  const prefetch = () =>
-    queryClient.prefetchQuery(getPersonOptions({ id: person.id }));
+  const prefetch = () => queryClient.prefetchQuery(getPersonOptions({ id: person.id }));
 
   return (
     <Link
@@ -40,7 +39,7 @@ export const PersonCard = ({ person }: PersonCardProps) => {
       to="/character/$id"
       params={{ id: String(person.id) }}
       state={{ returnUrl }}
-      onPointerDown={prefetch}
+      onPointerDown={() => void prefetch()}
     >
       <span className="text-white font-medium">{mergedPerson.name}</span>
 
@@ -50,9 +49,7 @@ export const PersonCard = ({ person }: PersonCardProps) => {
         <InfoBlock title="Mass:" value={mergedPerson.mass} />
       </div>
 
-      <span className="text-xs text-muted-foreground">
-        Click for more information
-      </span>
+      <span className="text-xs text-muted-foreground">Click for more information</span>
 
       <div className="flex gap-x-1 w-full h-1">
         <span className="bg-foreground rounded-2xl min-w-8" />

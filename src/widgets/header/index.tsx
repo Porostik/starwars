@@ -1,5 +1,5 @@
-import Logo from "@/shared/assets/logo.png";
-import { motion } from "framer-motion";
+import Logo from '@/shared/assets/logo.png';
+import { motion } from 'framer-motion';
 
 export const Header = () => {
   return (

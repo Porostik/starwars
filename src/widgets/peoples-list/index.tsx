@@ -1,7 +1,7 @@
-import { PersonCard, type ProcessPerson } from "@/entities/person";
-import { range } from "@/shared/helpers";
-import { Skeleton } from "@/shared/ui/skeleton";
-import type { PropsWithChildren } from "react";
+import { PersonCard, type ProcessPerson } from '@/entities/person';
+import { range } from '@/shared/helpers';
+import { Skeleton } from '@/shared/ui/skeleton';
+import type { PropsWithChildren } from 'react';
 
 interface PeoplesListProps {
   list: ProcessPerson[];

@@ -1,6 +1,6 @@
-import { create } from "zustand";
-import { persist } from "zustand/middleware";
-import type { ProcessPerson } from "../types";
+import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
+import type { ProcessPerson } from '../types';
 
 interface RewriteState {
   rewrites: Record<string, ProcessPerson>;
@@ -17,13 +17,13 @@ export const useRewriteStore = create<RewriteState>()(
         set((state) => ({
           rewrites: {
             ...state.rewrites,
-            [person.id]: person,
-          },
+            [person.id]: person
+          }
         }));
-      },
+      }
     }),
     {
-      name: "rewrites-person",
+      name: 'rewrites-person'
     }
   )
 );
@@ -33,6 +33,6 @@ export const useGetMergedPerson = (person: ProcessPerson) => {
 
   return {
     ...person,
-    ...(rewrites ? rewrites : {}),
+    ...(rewrites ? rewrites : {})
   };
 };

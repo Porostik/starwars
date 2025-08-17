@@ -1,7 +1,7 @@
-import { people } from "./people";
+import { people } from './people';
 
 export const api = {
-  people,
+  people
 };
 
-export * from "./people/types";
+export * from './people/types';

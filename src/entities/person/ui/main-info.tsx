@@ -1,10 +1,10 @@
-import { InfoCard } from "@/shared/ui/info-card";
-import type { ProcessPerson } from "../types";
-import { useQuery } from "@tanstack/react-query";
-import { getDirectOptions } from "../api/get-direct";
-import { WritableValue } from "@/shared/lib/writable-value";
-import { Skeleton } from "@/shared/ui/skeleton";
-import { PERSON_MAIN_INFO_LABELS } from "../constants";
+import { InfoCard } from '@/shared/ui/info-card';
+import type { ProcessPerson } from '../types';
+import { useQuery } from '@tanstack/react-query';
+import { getDirectOptions } from '../api/get-direct';
+import { WritableValue } from '@/shared/lib/writable-value';
+import { Skeleton } from '@/shared/ui/skeleton';
+import { PERSON_MAIN_INFO_LABELS } from '../constants';
 
 interface MainInfoProps {
   person: ProcessPerson;
@@ -23,11 +23,7 @@ const InfoBlock = ({ title, value, onChange, isLoading }: InfoBlockProps) => {
     <div className="w-full flex justify-between items-center text-sm text-white">
       <span>{title}</span>
       {onChange ? (
-        <WritableValue
-          className="font-medium min-h-5"
-          initialValue={value}
-          onChange={onChange}
-        />
+        <WritableValue className="font-medium min-h-5" initialValue={value} onChange={onChange} />
       ) : isLoading ? (
         <Skeleton className="h-5 w-[51px] bg-muted-foreground" />
       ) : (
@@ -48,13 +44,10 @@ export const MainInfo = ({ person, onChangeValue }: MainInfoProps) => {
             title={label}
             value={person[field as keyof typeof PERSON_MAIN_INFO_LABELS]}
             onChange={(value) => onChangeValue(field, value)}
+            key={field}
           />
         ))}
-        <InfoBlock
-          title="Home World"
-          value={homeworld.data?.name ?? ""}
-          isLoading={homeworld.isLoading}
-        />
+        <InfoBlock title="Home World" value={homeworld.data?.name ?? ''} isLoading={homeworld.isLoading} />
       </div>
     </InfoCard>
   );

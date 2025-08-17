@@ -1,6 +1,6 @@
-import { boolean } from "./boolean";
-import { num } from "./num";
-import { object } from "./object";
+import { boolean } from './boolean';
+import { num } from './num';
+import { object } from './object';
 
 export const processing = {
   ZodNumber: num,
@@ -8,6 +8,6 @@ export const processing = {
   ZodObject: object,
 
   default: {
-    transform: (v: unknown) => v,
-  },
+    transform: (v: unknown) => v
+  }
 };

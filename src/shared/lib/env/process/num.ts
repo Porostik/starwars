@@ -4,5 +4,5 @@ const transform = (v: string) => {
 };
 
 export const num = {
-  transform,
+  transform
 };

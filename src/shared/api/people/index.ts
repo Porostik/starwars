@@ -1,9 +1,9 @@
-import { getPerson } from "./current";
-import { getPeoples } from "./list";
+import { getPerson } from './current';
+import { getPeoples } from './list';
 
 export const people = {
   list: getPeoples,
-  current: getPerson,
+  current: getPerson
 };
 
-export * from "./types";
+export * from './types';

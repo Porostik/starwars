@@ -1,8 +1,8 @@
-import { api, type GetPeoplesParams } from "@/shared/api";
-import { keepPreviousData, queryOptions } from "@tanstack/react-query";
-import { processPeoples } from "../helpers/process";
+import { api, type GetPeoplesParams } from '@/shared/api';
+import { keepPreviousData, queryOptions } from '@tanstack/react-query';
+import { processPeoples } from '../helpers/process';
 
-const getPeopleListQueryKey = (params: GetPeoplesParams) => ["people", params];
+const getPeopleListQueryKey = (params: GetPeoplesParams) => ['people', params];
 
 export const getPeopleOptions = (params: GetPeoplesParams) =>
   queryOptions({
@@ -11,8 +11,8 @@ export const getPeopleOptions = (params: GetPeoplesParams) =>
       const { data } = await api.people.list(params);
       return {
         ...data,
-        results: processPeoples(data.results),
+        results: processPeoples(data.results)
       };
     },
-    placeholderData: keepPreviousData,
+    placeholderData: keepPreviousData
   });

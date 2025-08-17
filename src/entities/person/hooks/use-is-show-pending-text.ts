@@ -1,9 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-export const useIsShowPendingText = (
-  isPending: boolean,
-  thresholdMs: number
-) => {
+export const useIsShowPendingText = (isPending: boolean, thresholdMs: number) => {
   const [isShow, setShow] = useState(false);
 
   useEffect(() => {
@@ -17,6 +14,6 @@ export const useIsShowPendingText = (
 
   return {
     isShow,
-    isPending,
+    isPending
   };
 };
