@@ -38,6 +38,8 @@ jobs:
         run: pnpm exec playwright install --with-deps
 
       - name: E2E tests
+        env:
+          VITE_API_URL: ${{ vars.API_URL }}
         run: pnpm exec playwright test
 
       - name: Lint
