@@ -23,7 +23,7 @@ function Index() {
   const search = Route.useSearch();
   const navigate = Route.useNavigate();
 
-  const { data, isPending, isFetching } = useQuery(
+  const { data, isPending, isFetching, error } = useQuery(
     getPeopleOptions({
       page: search.page,
       search: search.query
@@ -49,6 +49,8 @@ function Index() {
       }
     });
   };
+
+  if (error) return <PageError routeId={Route.id} />;
 
   if (!data && isPending) return <PendingComponent />;
 
