@@ -28,7 +28,10 @@ jobs:
           cache: npm
 
       - name: Install deps
-        run: npm ci
+        run: npm ci --include=optional
+        env:
+          NPM_CONFIG_OPTIONAL: 'true'
+          NODE_ENV: development
 
       - name: Lint
         run: npm run lint
