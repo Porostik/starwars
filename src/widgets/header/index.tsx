@@ -10,7 +10,7 @@ export const Header = () => {
         alt="Logo"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.4 }}
+        transition={{ duration: 0.6 }}
       />
     </header>
   );
