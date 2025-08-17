@@ -33,6 +33,10 @@ jobs:
           NPM_CONFIG_OPTIONAL: 'true'
           NODE_ENV: development
 
+      - run: corepack enable
+      - run: corepack prepare pnpm@9 --activate
+      - run: pnpm install --frozen-lockfile
+
       - name: Lint
         run: npm run lint
 
