@@ -5,7 +5,7 @@ import { routeTree } from './route-tree.gen';
 import { queryClient } from '../query/client';
 
 // Create a new router instance
-const router = createRouter({ routeTree, context: { queryClient } });
+const router = createRouter({ routeTree, basepath: '/starwars', context: { queryClient } });
 
 // Register the router instance for type safety
 declare module '@tanstack/react-router' {
