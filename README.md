@@ -28,7 +28,7 @@ pnpm preview        # http://localhost:5173
 ### Lint
 
 ```bash
-pnpm lint           # падение при ошибках
+pnpm lint
 ```
 
 ### E2E
