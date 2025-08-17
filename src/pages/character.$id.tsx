@@ -16,6 +16,7 @@ import { PageError } from '@/features/page-error';
 import { useMemo, useState } from 'react';
 import { WritableValue } from '@/shared/lib/writable-value';
 import { Button } from '@/shared/ui/button';
+import { motion } from 'framer-motion';
 
 const PendingComponent = () => {
   const { isShow: isShowPendingText } = useIsShowPendingText(true, 5000);
@@ -62,9 +63,16 @@ function Character() {
         <BackLink />
 
         {isChanged && (
-          <Button className="h-7" variant="secondary" onClick={() => onRewrite(person)}>
-            Save
-          </Button>
+          <motion.div
+            className="fixed bottom-2 right-0 w-full px-2 md:absolute md:top-0 md:right-5 md:w-[120px]"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4 }}
+          >
+            <Button className="w-full" variant="secondary" onClick={() => onRewrite(person)}>
+              Save
+            </Button>
+          </motion.div>
         )}
       </div>
 
