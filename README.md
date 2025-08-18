@@ -43,7 +43,7 @@ pnpm exec playwright test
 Create `.env`:
 
 ```env
-VITE_API_URL=https://swapi.dev/api
+VITE_API_URL=https://swapi.py4e.com/api
 ```
 
 ## Repo struct
