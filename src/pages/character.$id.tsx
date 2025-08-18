@@ -17,6 +17,7 @@ import { useMemo, useState } from 'react';
 import { WritableValue } from '@/shared/lib/writable-value';
 import { Button } from '@/shared/ui/button';
 import { motion } from 'framer-motion';
+import { UnsaveAlert } from '@/features/unsave-alert';
 
 const PendingComponent = () => {
   const { isShow: isShowPendingText } = useIsShowPendingText(true, 5000);
@@ -100,6 +101,8 @@ function Character() {
         <AdditionalBlock title="Starships" urls={person.starships} key="starships" />
         <AdditionalBlock title="Vehicles" urls={person.vehicles} key="vehicles" />
       </div>
+
+      <UnsaveAlert isChanged={isChanged} />
     </div>
   );
 }
