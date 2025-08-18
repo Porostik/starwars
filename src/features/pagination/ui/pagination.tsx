@@ -20,12 +20,12 @@ interface PaginationButtonProps {
 const PaginationButton = ({ page, onClick, isActive }: PaginationButtonProps) => {
   return (
     <Button
-      className="font-medium relative size-4 p-3 flex items-center justify-center group text-center cursor-pointer"
+      className="font-medium relative text:xs md:text-sm size-4 md:size-8 p-3 flex items-center justify-center group text-center cursor-pointer"
       variant="clean"
       size="clean"
       onClick={onClick}
     >
-      <span className="text-xs">{page}</span>
+      {page}
       <div
         className={cn('absolute h-0.5 w-0 rounded-2xl bottom-0 z-1 left-0 red-sword group-hover:w-full', {
           'w-full': isActive
